@@ -21,6 +21,14 @@ const inputNumber = (number) => {
     }
 }
 
+numbers.forEach((number) => {
+    number.addEventListener("click", (event) => {
+        inputNumber(event.target.value)
+        updateScreen(currentNumber)
+    })
+})
+
+
 let prevNumber = ''
 let calculationOperator = ''
 let currentNumber = '0'
