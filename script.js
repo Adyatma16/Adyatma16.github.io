@@ -21,7 +21,7 @@ const inputNumber = (number) => {
     }
 }
 
-let prevNumber =
+let prevNumber = ''
 let calculationOperator = ''
 let currentNumber = '0'
 
@@ -40,7 +40,7 @@ const inputOperator = (operator) => {
     currentNumber = '0'
 }
 
-const equalSign = document.querySelector(".equal-sign")
+const equalSign = document.querySelector('.equal-sign')
 
 equalSign.addEventListener('click', () => {
     console.log('equal button is pressed')
@@ -50,7 +50,7 @@ const calculate = () => {
     let result = ''
     switch (calculationOperator) {
         case "+":
-            result = prevNumber + currentNumber
+            result = parseInt(prevNumber) + parseInt(currentNumber)
             break
         case "-":
             result = prevNumber - currentNumber
@@ -70,26 +70,11 @@ const calculate = () => {
 
 }
 
-const equalSign = document.querySelector('.equal-sign')
-
-equalSign.addEventListener('click', () => {
-    calculate()
-    updateScreen(currentNumber)
-})
-
-const calculate = () => {
-    let = result = ''
-    switch (calculationOperator) {
-        case '+':
-            result = parseFloat(prevNumber) + parseFloat(currentNumber)
-            break
-    }
-}
-
 const clearBtn = document.querySelector('.all-clear')
 
-clearBtn.addEventListener('click', () => {
-    console.log('AC button is pressed')
+clearBtn.addEventListener('click', (event) => {
+    clearAll()
+    updateScreen(currentNumber)
 })
 
 const clearAll = () => {
@@ -98,16 +83,13 @@ const clearAll = () => {
     currentNumber = '0'
 }
 
-const clearBtn = document.querySelector('.all-clear')
 
-clearBtn.addEventListener('click', (event) => {
-    clearAll()
-    updateScreen(currentNumber)
-})
 
 const decimal = document.querySelector('.decimal')
+
 decimal.addEventListener('click', (event) => {
-    console.log(event.target.value)
+    inputDecimal(event.target.value)
+    updateScreen(currentNumber)
 })
 
 inputDecimal = (dot) => {
@@ -117,9 +99,3 @@ inputDecimal = (dot) => {
     currentNumber += dot
 }
 
-const decimal = document.querySelector('.decimal')
-
-decimal.addEventListener('click', (event) => {
-    inputDecimal(event.target.value)
-    updateScreen(currentNumber)
-})
