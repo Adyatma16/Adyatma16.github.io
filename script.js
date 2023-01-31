@@ -21,13 +21,6 @@ const inputNumber = (number) => {
     }
 }
 
-numbers.forEach((number) => {
-    number.addEventListener("click", (event) => {
-        inputNumber(event.target.value)
-        updateScreen(currentNumber)
-    })
-})
-
 
 let prevNumber = ''
 let calculationOperator = ''
@@ -42,17 +35,16 @@ operators.forEach((operator) => {
 })
 
 const inputOperator = (operator) => {
-    if (calculationOperator === '') {
-        prevNumber = currentNumber
-    }
-    currentNumber = '0'
+    prevNumber = currentNumber
+    calculationOperator = operator
+    currentNumber = ''
 }
 
 const equalSign = document.querySelector('.equal-sign')
 
 equalSign.addEventListener('click', () => {
-calculate()
-updateScreen(currentNumber)
+    calculate()
+    updateScreen(currentNumber)
 })
 
 const calculate = () => {
