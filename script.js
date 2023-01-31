@@ -51,22 +51,23 @@ const inputOperator = (operator) => {
 const equalSign = document.querySelector('.equal-sign')
 
 equalSign.addEventListener('click', () => {
-    console.log('equal button is pressed')
+calculate()
+updateScreen(currentNumber)
 })
 
 const calculate = () => {
     let result = ''
     switch (calculationOperator) {
-        case "+":
-            result = parseInt(prevNumber) + parseInt(currentNumber)
+        case '+':
+            result = parseFloat(prevNumber) + parseFloat(currentNumber)
             break
-        case "-":
+        case '-':
             result = prevNumber - currentNumber
             break
-        case "*":
+        case '*':
             result = prevNumber * currentNumber
             break
-        case "/":
+        case '/':
             result = prevNumber / currentNumber
             break
         default:
@@ -80,7 +81,7 @@ const calculate = () => {
 
 const clearBtn = document.querySelector('.all-clear')
 
-clearBtn.addEventListener('click', (event) => {
+clearBtn.addEventListener('click', () => {
     clearAll()
     updateScreen(currentNumber)
 })
@@ -106,4 +107,3 @@ inputDecimal = (dot) => {
     }
     currentNumber += dot
 }
-
